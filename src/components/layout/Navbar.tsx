@@ -5,11 +5,10 @@ import { TerminalSquare, EyeOff, Eye } from "lucide-react";
 import { useSystemStore } from "@/system/store";
 
 export const Navbar = () => {
-    const { toggleConsole, toggleTacticalMode, tacticalMode } = useSystemStore((state) => ({
-        toggleConsole: state.toggleConsole,
-        toggleTacticalMode: state.toggleTacticalMode,
-        tacticalMode: state.tacticalMode,
-    }));
+    const toggleConsole = useSystemStore((state) => state.toggleConsole);
+    const toggleTacticalMode = useSystemStore((state) => state.toggleTacticalMode);
+    const tacticalMode = useSystemStore((state) => state.tacticalMode);
+
     const [activeSection, setActiveSection] = React.useState("");
 
     React.useEffect(() => {
