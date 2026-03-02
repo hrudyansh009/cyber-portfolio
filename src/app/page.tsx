@@ -42,7 +42,7 @@ export default function Home() {
             HRUDYANSH KAYASTHA
           </h1>
           <h2 className="text-xl md:text-2xl text-muted-foreground font-light tracking-tight">
-            AI-Driven Cybersecurity Engineer
+            Cybersecurity Automation & Detection Engineer
           </h2>
         </motion.div>
 
@@ -52,7 +52,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-2xl text-base md:text-lg text-white/70 leading-relaxed"
         >
-          Engineering structured, automation-driven defensive systems for modern cybersecurity operations.
+          I design and deploy Linux-based defensive platforms that reduce manual SOC workload, automate detection, and simulate real-world attack behavior.
         </motion.p>
 
         <motion.div
@@ -61,11 +61,8 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap gap-4 mt-4"
         >
-          <Button variant="default" className="gap-2" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-            View ALCDPX <ArrowRight className="w-4 h-4" />
-          </Button>
-          <Button variant="outline" className="gap-2" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-            View Projects
+          <Button variant="default" className="gap-2" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            Work With Me <ArrowRight className="w-4 h-4" />
           </Button>
           <Button variant="terminal" className="gap-2" onClick={toggleConsole}>
             <Terminal className="w-4 h-4" /> Enter Console Mode

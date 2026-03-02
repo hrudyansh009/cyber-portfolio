@@ -1,54 +1,63 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 
 const skills = [
     {
-        category: "Security Core",
-        items: ["Threat Hunting", "CTI Analysis", "Incident Triage", "Detection Engineering"],
+        category: "Defensive Engineering",
+        items: [
+            { name: "Linux Hardening", desc: "Automated baseline configuration to reduce exposed services and enforce secure defaults." },
+            { name: "Log Analysis", desc: "Structured parsing and normalization of telemetry for high-fidelity alerting." },
+            { name: "Threat Modeling", desc: "Identifying system vulnerabilities and designing proactive mitigation strategies." },
+            { name: "MITRE ATT&CK Mapping", desc: "Aligning detection rules with known adversary tactics to ensure coverage." }
+        ]
     },
     {
-        category: "Linux & Systems",
-        items: ["Linux Administration", "System Hardening", "Bash scripting", "Log auditing"],
+        category: "Security Automation",
+        items: [
+            { name: "Python Automation", desc: "Developing custom scripts for log correlation and API-driven orchestration." },
+            { name: "Bash Scripting", desc: "Automating system audits, configuration deployment, and routine SOC tasks." },
+            { name: "AI-Assisted Log Correlation", desc: "Utilizing ML models to enrich security events and reduce false positives." },
+            { name: "Alert Reduction Workflows", desc: "Building logic to filter noise and prioritize high-risk indicators." }
+        ]
     },
     {
-        category: "Networking",
-        items: ["TCP/IP fundamentals", "DNS/DHCP", "Port scanning", "Network diagnostics"],
-    },
-    {
-        category: "Automation & Engineering",
-        items: ["Python scripting", "CLI tooling", "Git workflows", "Modular architecture"],
-    },
-    {
-        category: "AI for Security",
-        items: ["Alert enrichment", "Correlation assistance", "Automation logic planning"],
-    },
+        category: "Systems & Infrastructure",
+        items: [
+            { name: "Kali Linux", desc: "Executing controlled threat simulations to validate defensive posture." },
+            { name: "Ubuntu Server", desc: "Architecting and securing stable Linux environments for defensive platforms." },
+            { name: "Git/GitHub CI Workflows", desc: "Version-controlling detection rules and automating testing pipelines." },
+            { name: "Deploy & Test Environments", desc: "Provisioning isolated labs for safe malware analysis and rule validation." }
+        ]
+    }
 ];
 
 export const SkillsMatrix = () => {
     return (
         <section id="skills" className="w-full flex-col flex py-12 border-t border-white/5 pt-20">
-            <h2 className="text-xl font-mono text-white tracking-widest uppercase mb-8">Technical Matrix</h2>
+            <h2 className="text-xl font-mono text-white tracking-widest uppercase mb-8">Capabilities Matrix</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {skills.map((skillGroup, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {skills.map((group, idx) => (
                     <motion.div
-                        key={idx}
-                        className="border border-white/10 bg-white/[0.02] p-6 rounded relative overflow-hidden group"
-                        initial={{ opacity: 0, y: 10 }}
+                        key={group.category}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
+                        className="flex flex-col gap-4"
                     >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <h3 className="text-sm font-mono text-white/50 mb-4">{skillGroup.category}</h3>
-                        <ul className="space-y-2">
-                            {skillGroup.items.map((item, i) => (
-                                <li key={i} className="text-sm text-white/80 flex items-center gap-2">
-                                    <span className="w-1 h-1 bg-white/30 rounded-full" /> {item}
-                                </li>
+                        <h3 className="text-sm font-semibold text-white/80 border-b border-white/5 pb-2">{group.category}</h3>
+                        <div className="flex flex-col gap-4">
+                            {group.items.map(skill => (
+                                <div key={skill.name} className="flex flex-col gap-1 border border-white/5 p-4 rounded bg-white/[0.01] hover:bg-white/[0.03] transition-colors">
+                                    <span className="text-sm font-medium text-white">{skill.name}</span>
+                                    <span className="text-xs text-muted-foreground leading-relaxed">{skill.desc}</span>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </motion.div>
                 ))}
             </div>

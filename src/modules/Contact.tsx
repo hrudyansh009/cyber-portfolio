@@ -2,42 +2,47 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { Mail, Github, Linkedin, Phone, TerminalSquare } from "lucide-react";
 
 export const Contact = () => {
     return (
-        <section id="contact" className="w-full flex-col flex py-24 border-t border-white/5 mt-12 mb-20 text-center items-center justify-center">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="max-w-xl flex flex-col items-center"
-            >
-                <span className="p-2 border border-white/10 bg-white/5 rounded-full mb-6">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/70 hover:text-white transition-colors">
-                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
-                </span>
-                <h2 className="text-3xl font-bold tracking-tight text-white mb-4">Initialize Contact Protocol</h2>
-                <p className="text-muted-foreground mb-8">
-                    Available for technical discussions regarding system automation, threat hunting infrastructure, and defensive engineering.
-                </p>
+        <section id="contact" className="w-full flex-col flex py-20 border-t border-white/5 relative">
+            <h2 className="text-xl font-mono text-white tracking-widest uppercase mb-12 text-center">Initialization Protocols</h2>
 
-                <div className="flex flex-col gap-4 font-mono text-sm w-full">
-                    <a href="mailto:hrudyansh80@gmail.com" className="p-4 border border-white/10 bg-black/50 hover:bg-white/5 transition-colors text-white/80 rounded flex justify-between items-center group">
-                        <span>EMAIL</span>
-                        <span className="group-hover:text-white transition-colors">hrudyansh80@gmail.com</span>
+            <div className="flex flex-col items-center gap-10 max-w-2xl mx-auto w-full">
+                <div className="flex flex-col items-center gap-4 text-center">
+                    <p className="text-xl md:text-2xl font-light text-white">Hrudyansh Kayastha</p>
+                    <p className="text-sm font-mono text-white/50 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 uppercase tracking-widest">
+                        Open to Security Automation, Detection Engineering, and Defensive Infrastructure Roles.
+                    </p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-4 w-full">
+                    <a href="mailto:hrudyansh80@gmail.com" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="gap-2 h-12 px-6">
+                            <Mail className="w-4 h-4" /> hrudyansh80@gmail.com
+                        </Button>
                     </a>
-                    <a href="tel:+918999321569" className="p-4 border border-white/10 bg-black/50 hover:bg-white/5 transition-colors text-white/80 rounded flex justify-between items-center group">
-                        <span>PHONE</span>
-                        <span className="group-hover:text-white transition-colors">+91 8999321569</span>
+
+                    <a href="tel:8999321569" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="gap-2 h-12 px-6">
+                            <Phone className="w-4 h-4" /> 8999321569
+                        </Button>
                     </a>
-                    <a href="https://linkedin.com/in/hrudyansh-kayastha-817853334" target="_blank" rel="noreferrer" className="p-4 border border-white/10 bg-black/50 hover:bg-white/5 transition-colors text-white/80 rounded flex justify-between items-center group">
-                        <span>LINKEDIN</span>
-                        <span className="group-hover:text-white transition-colors">View Profile &rarr;</span>
+
+                    <a href="https://github.com/hrudyansh009" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="gap-2 h-12 px-6">
+                            <Github className="w-4 h-4" /> GitHub
+                        </Button>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/hrudyansh-kayastha-817853334/" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="gap-2 h-12 px-6">
+                            <Linkedin className="w-4 h-4" /> LinkedIn
+                        </Button>
                     </a>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 };

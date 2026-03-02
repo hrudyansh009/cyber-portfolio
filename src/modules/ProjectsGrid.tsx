@@ -8,48 +8,49 @@ import { Badge } from "@/components/ui/Badge";
 const projects = [
     {
         title: "ALCDPX",
-        subtitle: "Autonomous Linux Cyber Defense Platform",
-        goal: "Automated Linux defense workflow: collect → detect → correlate → respond.",
-        arch: "Collectors → Normalizer → Rule Engine → Correlator → Response Runner → Dashboard",
-        capabilities: ["Real-time log monitoring", "Detection rules", "Event correlation", "Controlled responses", "Modular architecture"],
-        status: "In Progress",
+        subtitle: "Advanced Linux Cyber Defense Platform X",
+        goal: "Automate Linux defense workflows to reduce manual log triage and accelerate incident response.",
+        stack: "Linux, Python, Bash, AI Log Enrichment, Systemd, Rsyslog",
+        arch: "Log Ingestion → Normalizer → Rule Engine → Correlator → Response Runner → Dashboard",
+        role: "Designed, implemented, tested, automated, and documented the entire pipeline.",
+        outcome: "Reduced manual log triage, automated correlation logic, simulated attacker behavior, and established a structured multi-phase defensive pipeline.",
+        status: "Phase 7 implemented: Event correlation engine active",
         flagship: true,
-        categories: ["Defensive Automation", "AI Systems"]
+        categories: ["Defensive Automation", "Detection Engineering"]
     },
     {
         title: "Security Telemetry Pipeline",
-        goal: "Log ingestion, parsing and normalization, structured storage, query interface.",
-        purpose: "Foundation layer for detection engineering.",
-        status: "In Progress",
-        categories: ["Defensive Automation"]
+        goal: "Centralize and normalize security logs for efficient querying and detection engineering.",
+        stack: "Linux, Logstash, Elasticsearch, Python",
+        arch: "Distributed Log Shippers → Parsing & Normalization → Structured Storage → Query Interface",
+        role: "Architected parser configurations, deployed storage nodes, and tested data ingestion rates.",
+        outcome: "Standardized log formats from disparate sources, enabling rapid keyword searching and automated rule matching.",
+        status: "Fully operational foundation layer for detection engineering",
+        categories: ["Systems & Infrastructure", "Detection Engineering"]
     },
     {
         title: "Detection Rules Pack + Test Harness",
-        goal: "Custom rule schema, log replay testing, false-positive tuning, reproducible validation.",
-        status: "In Progress",
+        goal: "Create and validate high-fidelity detection rules with automated regression testing.",
+        stack: "Sigma, Python, Bash, CI/CD",
+        arch: "Custom Rule Schema → Log Replay Engine → False-Positive Tuner → Validation Output",
+        role: "Authored rules mapped to MITRE ATT&CK, built replay harness, and automated CI tests.",
+        outcome: "Ensured reproducible validation of detection logic and systematically tuned out false positives before deployment.",
+        status: "Beta testing active with continuous rule integration",
         categories: ["Detection Engineering"]
     },
     {
         title: "Incident Response Automation CLI",
-        goal: "Playbook execution engine, safe action runner, audit logging, dry-run mode, rollback safeguards.",
-        status: "Planned",
+        goal: "Execute standardized, safe response actions during active security incidents.",
+        stack: "Python, Bash, API Integrations",
+        arch: "Playbook Execution Engine → Safe Action Runner → Audit Logging → Dry-Run Mode → Rollback Safeguards",
+        role: "Designed the core execution engine, integrated safeguards, and developed initial playbooks.",
+        outcome: "Reduced mean time to respond (MTTR) for routine alerts while enforcing strictly audited and reversible actions.",
+        status: "Prototype complete, expanding playbook library",
         categories: ["Defensive Automation"]
-    },
-    {
-        title: "AI Alert Enrichment Assistant",
-        goal: "Alert summarization, context enrichment, incident case drafting, suggested human next steps.",
-        status: "Prototype",
-        categories: ["AI Systems"]
-    },
-    {
-        title: "Autonomous SOC Agent",
-        goal: "Incident grouping, automated investigation notes, playbook recommendations.",
-        status: "Roadmap",
-        categories: ["Roadmap", "AI Systems"]
     },
 ];
 
-const filters = ["All", "Defensive Automation", "Detection Engineering", "Recon Tools", "AI Systems", "Roadmap"];
+const filters = ["All", "Defensive Automation", "Detection Engineering", "Systems & Infrastructure"];
 
 export const ProjectsGrid = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -76,7 +77,7 @@ export const ProjectsGrid = () => {
                 </div>
             </div>
 
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                 <AnimatePresence>
                     {filtered.map((proj, idx) => (
                         <motion.div
@@ -88,39 +89,34 @@ export const ProjectsGrid = () => {
                             key={proj.title}
                             className={proj.flagship ? "md:col-span-2" : "col-span-1"}
                         >
-                            <Card className={`h-full group transition-all duration-300 ${proj.flagship ? "border-white/20 bg-white/[0.03] hover:border-white/40" : "border-white/5 bg-transparent hover:border-white/20 hover:bg-white/[0.01]"}`}>
-                                <CardHeader className="pb-4 relative">
-                                    {/* Subtle hover bracket effect */}
-                                    <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/0 group-hover:border-white/30 transition-all rounded-tr-lg m-2"></div>
-                                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/0 group-hover:border-white/30 transition-all rounded-bl-lg m-2"></div>
+                            <Card className={`h-full group transition-all duration-300 relative ${proj.flagship ? "border-white/20 bg-white/[0.03] hover:border-white/40" : "border-white/5 bg-transparent hover:border-white/20 hover:bg-white/[0.01]"}`}>
+                                {/* Subtle hover bracket effect */}
+                                <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/0 group-hover:border-white/30 transition-all rounded-tr-lg m-2 pointer-events-none"></div>
+                                <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/0 group-hover:border-white/30 transition-all rounded-bl-lg m-2 pointer-events-none"></div>
 
+                                <CardHeader className="pb-4 relative border-b border-white/5">
                                     <div className="flex justify-between items-start gap-4">
                                         <div>
-                                            <CardTitle className="text-xl flex items-center gap-3 text-white group-hover:text-white transition-colors">
+                                            <CardTitle className="text-xl flex flex-wrap items-center gap-3 text-white group-hover:text-white transition-colors">
                                                 {proj.title}
                                                 {proj.flagship && <span className="text-[10px] px-2 py-0.5 border border-white/20 bg-white/10 rounded font-mono uppercase tracking-widest text-white/80 shrink-0">Flagship</span>}
                                             </CardTitle>
                                             {proj.subtitle && <p className="text-sm text-muted-foreground mt-1 font-mono tracking-tight">{proj.subtitle}</p>}
                                         </div>
-                                        <Badge variant={proj.status === "In Progress" ? "default" : proj.status === "Prototype" ? "secondary" : "outline"} className="shrink-0">
-                                            {proj.status}
-                                        </Badge>
                                     </div>
                                 </CardHeader>
-                                <CardContent className="space-y-4 text-sm text-white/70">
-                                    <p><strong className="text-white">Goal:</strong> {proj.goal}</p>
-
-                                    {proj.arch && (
-                                        <p><strong className="text-white">Arch:</strong> <span className="font-mono text-xs bg-white/5 px-1">{proj.arch}</span></p>
-                                    )}
-                                    {proj.capabilities && (
-                                        <div className="flex flex-wrap gap-2 mt-2">
-                                            {proj.capabilities.map(c => (
-                                                <span key={c} className="text-[10px] font-mono border border-white/10 px-2 py-1 rounded bg-black/50">{c}</span>
-                                            ))}
-                                        </div>
-                                    )}
-                                    {proj.purpose && <p><strong className="text-white">Purpose:</strong> {proj.purpose}</p>}
+                                <CardContent className="space-y-4 text-sm text-white/80 pt-4">
+                                    <p><strong className="text-white">Objective:</strong> {proj.goal}</p>
+                                    <p><strong className="text-white">Tech Stack:</strong> <span className="text-white/70">{proj.stack}</span></p>
+                                    <p><strong className="text-white">Architecture:</strong> <span className="font-mono text-xs bg-white/5 px-1 py-0.5 rounded text-white/60">{proj.arch}</span></p>
+                                    <p><strong className="text-white">My Role:</strong> {proj.role}</p>
+                                    <div className="bg-white/[0.02] border border-white/5 p-3 rounded">
+                                        <p className="mb-1"><strong className="text-white text-xs uppercase tracking-widest font-mono">Real Outcome</strong></p>
+                                        <p className="text-white/70">{proj.outcome}</p>
+                                    </div>
+                                    <p className="px-3 py-1.5 bg-black/50 border border-white/10 text-xs text-white/60 rounded font-mono uppercase">
+                                        <span className="text-white">Status:</span> {proj.status}
+                                    </p>
                                 </CardContent>
                             </Card>
                         </motion.div>
